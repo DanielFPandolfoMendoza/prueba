@@ -1,0 +1,43 @@
+<div *ngIf="match">
+    
+  <h2 *ngIf="!match.id">Nuevo Partido</h2>
+  <h2 *ngIf="match.id">"{{match.name}}"</h2>
+
+  <br>
+  <label>
+      Liga:
+      <select [(ngModel)]="selectedLeagueId" (change)="onLeagueChange()">
+        <option *ngFor="let league of leagues" [value]="league.name">
+          {{ league.name }}
+        </option>
+      </select>
+  </label>
+  <br />
+
+  <br>
+  <label>
+      Equipo Local:
+      <select [(ngModel)]="match.team1" name="teamName" required>
+          <option *ngFor="let team of teams" [value]="team.name">
+            {{ team.name }}
+          </option>
+      </select>
+  </label>
+  <br />
+
+  <br>
+  <label>
+      Equipo Visitante:
+      <select [(ngModel)]="match.team2" name="teamName" required>
+          <option *ngFor="let team of teams" [value]="team.name">
+            {{ team.name }}
+          </option>
+      </select>
+  </label>
+  <br />
+
+  <p>
+      <button (click)="cancel()">Cancelar</button>
+      <button (click)="save()">Crear Partido</button>
+  </p>
+</div>
