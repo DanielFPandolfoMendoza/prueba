@@ -27,6 +27,12 @@ WORKDIR /app
 # Copiar el JAR generado desde la etapa de construcción
 COPY --from=BUILD /app/target/*.jar app.jar
 
+ENV SPRING_PROFILES_ACTIVE=local
+ENV SPRING_DATASOURCE_URL=jdbc:mysql://127.0.0.1:3306/apirest?serverTimezone=Europe/Madrid
+ENV SPRING_DATASOURCE_USERNAME=root  
+ENV SPRING_DATASOURCE_PASSWORD=17042002
+ENV SPRING_JACKSON_TIMEZONE=Europe/Madrid
+
 # Exponer el puerto 8080
 EXPOSE 8080
 
