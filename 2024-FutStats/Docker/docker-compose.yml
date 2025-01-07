@@ -13,3 +13,12 @@ services:
       dockerfile: Dockerfile
     restart: on-failure
 
+  frontend:
+    build:
+      context: ../Frontend/  # Directorio donde se encuentra el Dockerfile
+      dockerfile: Dockerfile
+    depends_on:
+      - web
+    ports:
+      - "4200:4200"
+
